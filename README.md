@@ -1,5 +1,9 @@
 # NagarNetra (SIH26124)
 
+GitHub: https://github.com/adityadhanawade/nagarnetra 
+Live site: https://nagarnetra-dun.vercel.app 
+Backend API: https://nagarnetra-api.vercel.app
+
 NagarNetra ("the city's eye") is an AI-powered platform that turns public transport buses into mobile urban sensing units.
 
 ## Structure
