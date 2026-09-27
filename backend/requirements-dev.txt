@@ -1,0 +1,4 @@
+pytest
+# only needed to convert the trained .pt models to .onnx (see ../ml/export_onnx.py)
+ultralytics
+onnx

@@ -1,0 +1,169 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+@import "@fontsource/fira-sans/400.css";
+@import "@fontsource/fira-sans/500.css";
+@import "@fontsource/fira-sans/600.css";
+@import "@fontsource/fira-sans/700.css";
+@import "@fontsource/fira-code/400.css";
+@import "@fontsource/fira-code/500.css";
+
+:root {
+  color-scheme: light;
+
+  --bg: #d6d3f6;
+  --bg-sky: linear-gradient(165deg, #c4d0f7 0%, #d6d3f6 55%, #e4d9f4 100%);
+  --surface: #f4f2ff;
+  --fg: #15173d;
+  --fg-muted: #444a75;
+  --line: #b9b7e6;
+  --line-strong: #6a6ea8;
+  --accent: #3f3cbb;
+  --on-accent: #ffffff;
+  --ok: #166534;
+  --ok-bg: #dcf1e3;
+  --warn: #92400e;
+  --warn-bg: #fae9cc;
+  --err: #b91c1c;
+  --err-bg: #f9dada;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-ok: var(--ok);
+  --color-ok-bg: var(--ok-bg);
+  --color-warn: var(--warn);
+  --color-warn-bg: var(--warn-bg);
+  --color-err: var(--err);
+  --color-err-bg: var(--err-bg);
+  --font-sans: "Fira Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Fira Code", ui-monospace, monospace;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-sky) fixed, var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-padding-top: 5rem; /* the fixed header must not cover a focused element */
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.map-preview {
+  background: #dfe3fb;
+}
+
+.map-preview .leaflet-tile-pane {
+  filter: saturate(0.45) brightness(1.03);
+}
+
+.map-dot {
+  display: block;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+}
+
+.map-marker .map-dot {
+  width: 100%;
+  height: 100%;
+}
+
+.map-dot--bus {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.map-dot--issue {
+  background: var(--err);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--err) 25%, transparent);
+  animation: issue-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --cat-pothole: #d97706;
+  --cat-damage: #0891b2;
+  --cat-water: #7c3aed;
+}
+
+.issue-dot {
+  display: block;
+  border: 2px solid #fff;
+}
+
+.map-marker .issue-dot {
+  width: 100%;
+  height: 100%;
+}
+
+.issue-dot--pothole {
+  background: var(--cat-pothole);
+  border-radius: 9999px;
+}
+
+.issue-dot--damage {
+  background: var(--cat-damage);
+  border-radius: 3px;
+  transform: rotate(45deg) scale(0.82);
+}
+
+.issue-dot--water {
+  background: var(--cat-water);
+  border-radius: 50% 0 50% 50%;
+  transform: rotate(45deg) scale(0.85);
+}
+
+.issue-selected .issue-dot {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.bus-label {
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  box-shadow: none;
+  color: var(--fg);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 1px 6px;
+}
+
+.bus-label::before {
+  display: none;
+}
+
+.heat-bar {
+  background: linear-gradient(to right, #d9d8f5, #a5a3e8, #5e5bd0, #2a2790);
+}
+
+@keyframes issue-pop {
+  from {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-dot--issue {
+    animation: none;
+  }
+}
+
+button,
+a,
+select {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}

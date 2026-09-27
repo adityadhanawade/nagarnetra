@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+*.pyc
+.env
+.env.local
+*.pt
+ml/runs/
+tools/
+
+hf_space/.secrets.txt
+backend/.env.production
+
+backend/device_key.txt

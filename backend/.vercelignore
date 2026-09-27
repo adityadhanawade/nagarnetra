@@ -1,0 +1,12 @@
+.venv
+__pycache__
+*.pyc
+tests
+scripts
+models/*.pt
+.env
+.env.*
+requirements-dev.txt
+*.pt
+weights
+device_key.txt
